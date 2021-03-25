@@ -5,17 +5,17 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.3.0.RELEASE</version>
+		<version>2.3.0.RELEASE</version> 
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>one.digitalinnovation</groupId>
 	<artifactId>beerstock</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>beerstock</name>
-	<description>Beer stock project for testing live coding</description>
+	<description>Beer stock para realizar Testes</description>
 
 	<properties>
-		<java.version>14</java.version>
+		<java.version>13</java.version>
 	</properties>
 
 	<dependencies>

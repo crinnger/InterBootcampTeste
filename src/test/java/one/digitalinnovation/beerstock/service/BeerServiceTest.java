@@ -45,15 +45,15 @@ public class BeerServiceTest {
     @Test
     void whenNewBeerInformedThenShouldBeCreated() throws BeerAlreadyRegisteredException {
         BeerDTO expectedBeerDTO = BeerDTOBuilder.builder().build().toBeerDTO();
-        Beer expectedSavedBeer = beerMapper.toModel(beerDTO);
+        Beer expectedSavedBeer = beerMapper.toModel(expectedBeerDTO);
         
         // verificar se a cerveja ja nao existe
-        when(beerRepository.findByName(beerDTO.getName())).thenReturn(Optional.empty());
+        when(beerRepository.findByName(expectedBeerDTO.getName())).thenReturn(Optional.empty());
         // salva a cerveja
         when(beerRepository.save(expectedSavedBeer)).thenReturn(expectedSavedBeer);
 
         //testa o servico
-        BeerDTO createdBeerDTO = beerService.createBeer(beerDTO);
+        BeerDTO createdBeerDTO = beerService.createBeer(expectedBeerDTO);
         
         // valida se a cerveja foi criada corretamente;
         assertThat(createdBeerDTO.getId(), is(equalTo(expectedBeerDTO.getId())));
@@ -169,7 +169,7 @@ public class BeerServiceTest {
         when(beerRepository.findById(INVALID_BEER_ID)).thenReturn(Optional.empty());
 
         assertThrows(BeerNotFoundException.class, () -> beerService.increment(INVALID_BEER_ID, quantityToIncrement));
-    }
+   }
 
     @Test
     void whenDecrementIsCalledThenDecrementBeerStock() throws BeerNotFoundException, BeerStockExceededException {
